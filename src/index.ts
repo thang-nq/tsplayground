@@ -1,7 +1,7 @@
 import Server from "./server";
 import { RedisHelper } from "./RedisHelper";
 
-const PORT = 3000;
+const PORT = 8080;
 // const redisClient = RedisHelper.getInstance();
 // redisClient.connect().then(() => {
 //   console.log(`Successfully connect to redis`);
