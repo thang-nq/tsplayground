@@ -5,7 +5,10 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsnd --respawn ./src/index.ts"
+    "build": "tsc",
+    "dev": "tsnd --respawn ./src/index.ts",
+    "clean": "rimraf dist",
+    "start": "npm run clean && npm run build && node ./dist/index.js"
   },
   "keywords": [],
   "author": "",
