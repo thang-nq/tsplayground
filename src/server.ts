@@ -11,15 +11,14 @@ import type { RedisClient } from "./@types/redis";
 export default class Server {
   public instance: Application;
   public PORT: number;
-  public redisIntance: RedisClient;
+  // public redisIntance: RedisClient;
   /**
    * Create new server with redis
    * @param port Port number
-   * @param redis Redis instance
    */
-  constructor(port: number, redis?: RedisClient) {
+  constructor(port: number) {
     this.PORT = port;
-    this.redisIntance = redis!;
+    // this.redisIntance = redis!;
     this.instance = Express();
     this.middlerwares();
     this.routing();
@@ -41,7 +40,7 @@ export default class Server {
   }
 
   public routing(): void {
-    this.instance.use("/api", new MainRouter(this.redisIntance).router);
+    this.instance.use(new MainRouter().router);
   }
 
   public errorHandler(): void {

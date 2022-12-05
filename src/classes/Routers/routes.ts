@@ -13,7 +13,17 @@ export class MainRouter {
   }
 
   private routingSetup() {
-    this.router.use("/user", new UserRoutes(this.redisInstance).router);
+    // this.router.use("/user", new UserRoutes(this.redisInstance).router);
     this.router.use("/dashboard", new AuthRoutes().router);
+    this.router.get(
+      "/_healthcheck_",
+      async (req: Request, res: Response, next: NextFunction) => {
+        try {
+          return res.status(200).send("OK");
+        } catch (error) {
+          return next(error);
+        }
+      }
+    );
   }
 }
