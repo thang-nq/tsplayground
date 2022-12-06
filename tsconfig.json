@@ -6,6 +6,7 @@
     "lib": ["ES2022"],
     "module": "CommonJS",
     "baseUrl": "./",
+    "rootDir": "./src",
     "outDir": "dist",
     "target": "ES2022",
     "strict": true,

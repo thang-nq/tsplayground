@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const server_1 = __importDefault(require("./server"));
 require("./RedisHelper");
-const PORT = 3000;
+const PORT = 8080;
 // const redisClient = RedisHelper.getInstance();
 // redisClient.connect().then(() => {
 //   console.log(`Successfully connect to redis`);

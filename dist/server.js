@@ -13,15 +13,14 @@ require("./auth");
 class Server {
     instance;
     PORT;
-    redisIntance;
+    // public redisIntance: RedisClient;
     /**
      * Create new server with redis
      * @param port Port number
-     * @param redis Redis instance
      */
-    constructor(port, redis) {
+    constructor(port) {
         this.PORT = port;
-        this.redisIntance = redis;
+        // this.redisIntance = redis!;
         this.instance = (0, express_1.default)();
         this.middlerwares();
         this.routing();
@@ -40,7 +39,7 @@ class Server {
         this.instance.use(express_1.default.urlencoded({ extended: true }));
     }
     routing() {
-        this.instance.use("/api", new routes_1.MainRouter(this.redisIntance).router);
+        this.instance.use(new routes_1.MainRouter().router);
     }
     errorHandler() {
         this.instance.use(ErrorHandler_1.handleError);

@@ -5,6 +5,8 @@ import { MainRouter } from "./classes/Routers/routes";
 import { checkJwt, checkScopes, login } from "./auth";
 import type { createClient } from "@redis/client";
 import type { RedisClient } from "./@types/redis";
+import expressLayouts from "express-ejs-layouts";
+import path from "path";
 /**
  * The server class of the app
  */
@@ -37,6 +39,9 @@ export default class Server {
   public middlerwares(): void {
     this.instance.use(Express.json());
     this.instance.use(Express.urlencoded({ extended: true }));
+    // this.instance.use(expressLayouts);
+    this.instance.set("views", path.join(__dirname, "./public/views"));
+    this.instance.set("view engine", "ejs");
   }
 
   public routing(): void {

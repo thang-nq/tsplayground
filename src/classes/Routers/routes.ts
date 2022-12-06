@@ -25,5 +25,16 @@ export class MainRouter {
         }
       }
     );
+    this.router.post(
+      "/slack-entry",
+      async (req: Request, res: Response, next: NextFunction) => {
+        try {
+          console.log(req.body);
+          return res.status(200).send(req.body.challenge);
+        } catch (error) {
+          return next(error);
+        }
+      }
+    );
   }
 }

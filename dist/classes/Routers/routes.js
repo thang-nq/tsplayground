@@ -15,6 +15,14 @@ class MainRouter {
     routingSetup() {
         // this.router.use("/user", new UserRoutes(this.redisInstance).router);
         this.router.use("/dashboard", new auth_routes_1.AuthRoutes().router);
+        this.router.get("/_healthcheck_", async (req, res, next) => {
+            try {
+                return res.status(200).send("OK");
+            }
+            catch (error) {
+                return next(error);
+            }
+        });
     }
 }
 exports.MainRouter = MainRouter;
